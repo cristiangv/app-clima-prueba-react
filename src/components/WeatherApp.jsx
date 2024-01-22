@@ -21,11 +21,7 @@ const WeatherApp = () => {
     try {
       const response = await fetch(`${urlBase}?q=${ciudad}&appid=${API_KEY}`);
       const data = await response.json();
-      if (data.name) {
-        setDataClima(data);
-      } else {
-        setDataClima("");
-      }
+      setDataClima(data);
     } catch (error) {
       console.error("Ha ocurrido un problema: ", error);
     }
@@ -48,11 +44,6 @@ const WeatherApp = () => {
           <img
             src={`https://openweathermap.org/img/wn/${dataClima.weather[0].icon}@2x.png`}
           />
-        </div>
-      )}
-      {!dataClima && (
-        <div className="container">
-          <p>La ciudad ({ciudad}) no está en la BBDD</p>
         </div>
       )}
     </div>
